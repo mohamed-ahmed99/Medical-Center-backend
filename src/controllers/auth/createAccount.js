@@ -77,7 +77,7 @@ export const createAccount = asyncHandler(async (req, res) => {
 
     // cookie for verify email
     const isProduction = process.env.NODE_ENV === "production";
-    res.cookie("TP-Code-Auth", token, {
+    res.cookie("Medical_Center_Auth", token, {
         httpOnly: true,
         secure: isProduction,
         sameSite: isProduction ? "None" : "Lax",
