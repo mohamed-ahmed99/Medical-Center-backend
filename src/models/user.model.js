@@ -8,9 +8,14 @@ const userSchema = new mongoose.Schema({
     password:{type:String, required:true, select:false},
     phone:{type:String, required:true},
 
+    avatar:{
+        url: String,
+        id: String
+    },
+
     status: {
         type: String,
-        enum: ["Active", "Blocked", "Deleted"],
+        enum: ["Active", "Inactive", "Deleted"],
         default: "Active"
     },
 
@@ -21,7 +26,7 @@ const userSchema = new mongoose.Schema({
         default: "Secretary"
     },
 
-    gender: { type: String, enum: ["Male", "Female"], required: true },
+    gender: { type: String, enum: ["ذكر", "أنثى"], required: true },
 }, {timestamps:true})
 
 userSchema.methods.checkPassword = async function (password) {
