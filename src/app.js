@@ -11,6 +11,7 @@ import { connectDB } from './config/mongooDB.js'
 
 // import routes
 import authRouter from './routes/auth.routes.js'
+import daysRouter from './routes/days.routes.js'
 
 const app = express() 
 app.set('trust proxy', true); // for get real ip
@@ -45,7 +46,8 @@ app.get('/', (req, res) => {
 
 
 /////////////////////// use routes
-app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/auth', authRouter) // auth routes
+app.use('/api/v1/days', daysRouter) // days routes
 
 // not found routes
 app.use((req, res) => {

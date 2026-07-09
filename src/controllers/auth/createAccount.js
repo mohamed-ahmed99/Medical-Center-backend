@@ -70,7 +70,7 @@ export const createAccount = asyncHandler(async (req, res) => {
 
     // create token for verify email
     const token = jwt.sign(
-        { _id: newAccount._id, email: newAccount.email },
+        { _id: newAccount._id, email: newAccount.email, role: newAccount.role },
         process.env.JWT_SECRET,
         { expiresIn: "10m" }
     )
