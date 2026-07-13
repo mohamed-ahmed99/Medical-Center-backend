@@ -4,6 +4,7 @@ import { createAccount, requestedFields } from '../controllers/auth/createAccoun
 import { login } from '../controllers/auth/login.js'
 import { logout } from '../controllers/auth/logout.js'
 import {verifyToken} from '../middlewares/verifyToken.middleware.js'
+import { verifyMe } from '../controllers/auth/verifyMe.js'
 
 const authRouter = express.Router()
 
@@ -16,5 +17,9 @@ authRouter.post('/login', login)
 
 // logout
 authRouter.post('/logout', verifyToken("Medical_Center_Auth"), logout)
+
+// verify me
+authRouter.get('/verify-me', verifyToken("Medical_Center_Auth"), verifyMe)
+
 
 export default authRouter

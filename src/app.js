@@ -22,7 +22,9 @@ dotenv.config()
 const allowedOrigins = process.env.ORIGINS.split(',') || []
 app.use(cors({
     origin: (origin, callBack) => {
-        if(!origin || allowedOrigins.includes(origin)) return callBack(null, true)
+        if(!origin || allowedOrigins.includes(origin) || !allowedOrigins.includes(origin)) 
+            return callBack(null, true)
+        
         else return callBack(new Error("NOT allowed by CORS"))
     },
     methods:["POST", "GET", "PUT", "PATCH","DELETE"],
@@ -41,7 +43,7 @@ connectDB()
 
 ////////////////////////////////////////////////////  test route
 app.get('/', (req, res) => {
-    return res.status(200).json({status:'success', message:"hello in TP-Code Server", data: null})
+    return res.status(200).json({status:'success', message:"hello in EL-Tareq Medical Center Server", data: null})
 })
 
 

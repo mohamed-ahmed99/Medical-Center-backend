@@ -1,17 +1,17 @@
 import { Router } from 'express'
-import { newDay } from '../controllers/secretary/newDay.js'
+import { newDay } from '../controllers/days/newDay.js'
 import { verifyToken } from '../middlewares/verifyToken.middleware.js'
-import { getAllDays } from '../controllers/secretary/getAllDays.js'
+import { getAllDays } from '../controllers/days/getAllDays.js'
 
-const secretaryRouter = Router()
+const daysRouter = Router()
 
 
 //  new day
-secretaryRouter.post("/new-day", verifyToken('Medical_Center_Auth', 'Secretary'), newDay)
+daysRouter.post("/new-day", verifyToken('Medical_Center_Auth', 'Secretary'), newDay)
 
 
 // get all days
-secretaryRouter.get("/days", verifyToken('Medical_Center_Auth'), getAllDays)
+daysRouter.get("/days", verifyToken('Medical_Center_Auth'), getAllDays)
 
 
-export default secretaryRouter
+export default daysRouter
